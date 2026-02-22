@@ -1,0 +1,206 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import {
+  PROCESS_STEPS,
+  VALUE_CARDS,
+  TEAM_MEMBERS,
+} from "@/constants";
+import { Target, Lightbulb, Shield, Eye, Linkedin } from "lucide-react";
+
+const valueIcons = { Target, Lightbulb, Shield, Eye };
+
+export default function AboutPage() {
+  return (
+    <div className="pt-24 pb-20">
+      {/* Hero */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl"
+          >
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              We Are Falahsys — A Team Obsessed With Craft
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              We believe in building digital products that make a difference. From brand identity to web development and digital marketing, we combine precision, innovation, and transparency to deliver results that help our clients grow.
+            </p>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 md:py-24 bg-muted/50">
+        <Container>
+          <SectionHeading
+            eyebrow="Why Choose Us"
+            title="What Drives Us"
+          />
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1 } },
+            }}
+          >
+            {VALUE_CARDS.map((card) => {
+              const Icon = valueIcons[card.icon as keyof typeof valueIcons] ?? Target;
+              return (
+                <motion.div
+                  key={card.id}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                >
+                  <Card className="h-full text-center">
+                    <div className="inline-flex w-12 h-12 rounded-xl bg-accent/20 items-center justify-center text-accent mb-4">
+                      <Icon size={24} />
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{card.title}</h3>
+                    <p className="text-sm text-muted-foreground">{card.description}</p>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* Process */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <SectionHeading
+            eyebrow="Our Process"
+            title="From Idea to Launch"
+          />
+          <motion.div
+            className="flex flex-col md:flex-row md:flex-wrap md:justify-between gap-6 md:gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.08 } },
+            }}
+          >
+            {PROCESS_STEPS.map((step, i) => (
+              <motion.div
+                key={step.id}
+                variants={{
+                  hidden: { opacity: 0, x: -10 },
+                  visible: { opacity: 1, x: 0 },
+                }}
+                className="flex items-center gap-4"
+              >
+                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/20 text-accent font-bold flex items-center justify-center text-sm">
+                  {i + 1}
+                </span>
+                <span className="text-foreground font-medium">{step.title}</span>
+                {i < PROCESS_STEPS.length - 1 && (
+                  <span className="hidden md:inline text-muted-foreground/60 mx-2">→</span>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* Tech stack */}
+      <section className="py-16 md:py-24 bg-muted/50">
+        <Container>
+          <SectionHeading
+            eyebrow="Tech Stack"
+            title="Tools We Use"
+          />
+          <motion.div
+            className="flex flex-wrap gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            {["React", "Next.js", "Node.js", "Figma", "TailwindCSS", "TypeScript", "PostgreSQL"].map((tech) => (
+              <span
+                key={tech}
+                className="px-4 py-2 rounded-lg bg-muted border border-gray-200 text-muted-foreground font-medium text-sm"
+              >
+                {tech}
+              </span>
+            ))}
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* Team */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <SectionHeading
+            eyebrow="Our Team"
+            title="The People Behind Falahsys"
+          />
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.15 } },
+            }}
+          >
+            {TEAM_MEMBERS.map((member) => (
+              <motion.article
+                key={member.id}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                className="text-center"
+              >
+                <div
+                  className="w-24 h-24 rounded-full bg-accent/20 text-accent text-2xl font-bold flex items-center justify-center mx-auto mb-4"
+                  aria-hidden
+                >
+                  {member.avatarInitial}
+                </div>
+                <h3 className="text-lg font-bold text-foreground">{member.name}</h3>
+                <p className="text-sm text-muted-foreground mb-3">{member.role}</p>
+                {member.linkedIn && (
+                  <a
+                    href={member.linkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-accent text-sm hover:underline"
+                    aria-label={`${member.name} on LinkedIn`}
+                  >
+                    <Linkedin size={18} /> LinkedIn
+                  </a>
+                )}
+              </motion.article>
+            ))}
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 md:py-24 text-center">
+        <Container>
+          <p className="text-xl text-muted-foreground mb-6">Ready to start your project?</p>
+          <Button href="/contact" variant="primary" size="lg">
+            Get in Touch
+          </Button>
+        </Container>
+      </section>
+    </div>
+  );
+}
