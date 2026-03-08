@@ -6,9 +6,9 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { SERVICES } from "@/constants";
-import { Palette, Globe, TrendingUp, Smartphone, ArrowRight } from "lucide-react";
+import { Palette, Globe, TrendingUp, Smartphone, ArrowRight, Brain } from "lucide-react";
 
-const iconMap = { Palette, Globe, TrendingUp, Smartphone };
+const iconMap = { Palette, Globe, TrendingUp, Smartphone, Brain };
 
 export function Services() {
   return (

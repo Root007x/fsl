@@ -71,6 +71,20 @@ export const SERVICES: Service[] = [
     ],
     href: "/contact",
   },
+  {
+    id: "ai-solutions",
+    title: "AI Solutions & Intelligent Systems",
+    description: "We help businesses leverage artificial intelligence to automate operations, gain insights from data, and build smarter digital products that improve efficiency and customer experience.",
+    icon: "Brain",
+    subServices: [
+      "AI Agent Development",
+      "LLM Applications & Chatbots",
+      "Predictive Analytics & Machine Learning",
+      "Computer Vision Systems",
+      "AI Workflow Automation",
+    ],
+    href: "/contact",
+  },
 ];
 
 /** Contact form service dropdown options */
@@ -84,6 +98,7 @@ export const CONTACT_SERVICE_OPTIONS = [
   { value: "content-writing", label: "Content Writing" },
   { value: "creative-design", label: "Creative Design" },
   { value: "custom-video-making", label: "Custom Video Making" },
+  { value: "ai-solutions", label: "AI Solutions & Intelligent Systems" },
 ];
 
 export const STATS: Stat[] = [
