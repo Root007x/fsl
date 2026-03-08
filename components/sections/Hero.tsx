@@ -442,8 +442,8 @@ export function Hero() {
           >
             {STATS.map((stat) => (
               <div key={stat.label} className="flex flex-col gap-0.5">
-                <span className="text-2xl font-bold text-slate-900">{stat.value}</span>
-                <span className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+                <span className="text-2xl font-bold text-amber-400 lg:text-slate-900">{stat.value}</span>
+                <span className="text-[11px] uppercase tracking-[0.18em] text-amber-400/80 lg:text-slate-400">
                   {stat.label}
                 </span>
               </div>

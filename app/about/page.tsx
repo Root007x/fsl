@@ -11,7 +11,7 @@ import {
   TEAM_MEMBERS,
   TOOLS,
 } from "@/constants";
-import { Target, Lightbulb, Shield, Eye, Linkedin } from "lucide-react";
+import { Target, Lightbulb, Shield, Eye } from "lucide-react";
 
 const valueIcons = { Target, Lightbulb, Shield, Eye };
 
@@ -181,14 +181,14 @@ export default function AboutPage() {
               visible: { transition: { staggerChildren: 0.15 } },
             }}
           >
-            {TEAM_MEMBERS.map((member) => (
+            {TEAM_MEMBERS.map((member, index) => (
               <motion.article
                 key={member.id}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
                 }}
-                className="text-center"
+                className={`text-center ${index === 0 ? "md:order-2" : index === 1 ? "md:order-1" : "md:order-3"}`}
               >
                 <div
                   className="w-24 h-24 rounded-full bg-accent/20 text-accent text-2xl font-bold flex items-center justify-center mx-auto mb-4"
@@ -198,17 +198,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-lg font-bold text-foreground">{member.name}</h3>
                 <p className="text-sm text-muted-foreground mb-3">{member.role}</p>
-                {member.linkedIn && (
-                  <a
-                    href={member.linkedIn}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-accent text-sm hover:underline"
-                    aria-label={`${member.name} on LinkedIn`}
-                  >
-                    <Linkedin size={18} /> LinkedIn
-                  </a>
-                )}
+
               </motion.article>
             ))}
           </motion.div>
