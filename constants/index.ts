@@ -4,7 +4,7 @@ import type { NavLink, Service, Project, Testimonial, Stat, ContactInfo, Process
 
 export const COMPANY = {
   name: "Falahsys",
-  tagline: "We Build Digital Products That Make a Difference",
+  tagline: "Software & Digital Solutions for SMEs",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
@@ -15,47 +15,75 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+/** Homepage services (4 cards) */
 export const SERVICES: Service[] = [
   {
     id: "creative-design",
     title: "Creative Design",
-    description: "We craft distinctive brand identities and visual systems that resonate with your audience and stand out in the market.",
+    description: "We create modern visual identities and marketing materials that help your brand stand out and communicate effectively with your audience.",
     icon: "Palette",
     subServices: [
       "Brand Identity",
-      "Brand Guidelines",
-      "Digital Materials",
-      "Print Materials",
-      "Illustrations & Iconography",
+      "Graphic Design",
+      "Social Media Creatives",
+      "Marketing Materials",
+      "Video Editing & Motion Graphics",
     ],
-    href: "/#services",
+    href: "/contact",
   },
   {
-    id: "web-design-development",
-    title: "Web Design & Development",
-    description: "From concept to launch, we build high-performance websites and e-commerce solutions that scale with your business.",
+    id: "web-software-development",
+    title: "Web & Software Development",
+    description: "We design and build scalable digital products including websites, ERP systems, and custom business software tailored to your needs.",
     icon: "Globe",
     subServices: [
-      "Website Design",
-      "Web Development",
-      "E-commerce Solutions",
-      "Maintenance & Support",
+      "Custom Web Design & Development",
+      "E-Commerce Website Development",
+      "ERP Management Systems",
+      "Website Maintenance & Support",
     ],
-    href: "/#services",
+    href: "/contact",
   },
   {
-    id: "digital-marketing",
-    title: "Digital Marketing",
-    description: "Data-driven strategies to grow your reach, engage your audience, and convert leads into loyal customers.",
+    id: "mobile-app-development",
+    title: "Mobile Application Development",
+    description: "We build high-performance mobile applications that deliver seamless user experiences across Android and iOS platforms.",
+    icon: "Smartphone",
+    subServices: [
+      "Custom Mobile Application Development",
+      "UI/UX Design for Mobile Apps",
+      "App Testing & Optimization",
+      "App Maintenance & Updates",
+    ],
+    href: "/contact",
+  },
+  {
+    id: "digital-marketing-growth",
+    title: "Digital Marketing & Growth",
+    description: "We help businesses grow online with data-driven marketing strategies and engaging content that attracts and converts customers.",
     icon: "TrendingUp",
     subServices: [
+      "Digital Marketing",
+      "Search Engine Optimization (SEO)",
+      "Content Writing",
       "Social Media Marketing",
-      "Content Marketing",
-      "SEO & SEM",
-      "Email Marketing",
+      "Custom Video Marketing",
     ],
-    href: "/#services",
+    href: "/contact",
   },
+];
+
+/** Contact form service dropdown options */
+export const CONTACT_SERVICE_OPTIONS = [
+  { value: "e-commerce-website", label: "E-Commerce Website" },
+  { value: "erp-management", label: "Erp Management" },
+  { value: "custom-web-design-development", label: "Custom Web Design and Development" },
+  { value: "custom-mobile-application", label: "Custom Mobile Application" },
+  { value: "digital-marketing", label: "Digital Marketing" },
+  { value: "seo", label: "Seo" },
+  { value: "content-writing", label: "Content Writing" },
+  { value: "creative-design", label: "Creative Design" },
+  { value: "custom-video-making", label: "Custom Video Making" },
 ];
 
 export const STATS: Stat[] = [
@@ -67,36 +95,40 @@ export const STATS: Stat[] = [
 
 export const PROJECTS: Project[] = [
   {
-    id: "artcon",
-    name: "Artcon",
+    id: "kepler-academy",
+    name: "Kepler Academy",
     category: "Web Design",
-    year: "2023",
-    description: "An art platform embracing artistic diversity and emerging talent.",
+    year: "2024",
+    description: "Education platform delivering quality learning experiences.",
     tags: ["Website Design", "Web Development"],
+    image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Kepler+Academy",
   },
   {
-    id: "labiba-builders",
-    name: "Labiba Builders",
+    id: "skylab-education",
+    name: "Skylab Education",
+    category: "Web Design",
+    year: "2024",
+    description: "Innovative educational solutions and digital learning.",
+    tags: ["Web Development"],
+    image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Skylab+Education",
+  },
+  {
+    id: "sulekkho",
+    name: "Sulekkho",
+    category: "Development",
+    year: "2024",
+    description: "Digital platform for streamlined services.",
+    tags: ["Web Development"],
+    image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Sulekkho",
+  },
+  {
+    id: "bari-computer-trading",
+    name: "Bari Computer Trading Co.",
     category: "Branding",
     year: "2024",
-    description: "A distinguished construction company with two decades of expertise.",
+    description: "Computer and technology trading company.",
     tags: ["Brand Design"],
-  },
-  {
-    id: "bm-abroad-dreamers",
-    name: "BM Abroad Dreamers",
-    category: "Development",
-    year: "2023",
-    description: "Study abroad and tourism services platform.",
-    tags: ["Web Development"],
-  },
-  {
-    id: "crazy-dough",
-    name: "Crazy Dough",
-    category: "Branding",
-    year: "2023",
-    description: "Immersive pizza brand experience and identity.",
-    tags: ["Branding"],
+    image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Bari+Computer+Trading",
   },
 ];
 
@@ -144,14 +176,14 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const CONTACT_INFO: ContactInfo = {
-  email: "hello@falahsys.com",
-  phone: "+1 (555) 000-0000",
-  address: "Your City, Your Country",
+  email: "falahsystemsltd@gmail.com",
+  phone: "+880 1339-904830",
+  address: "Ka/4, Mamata Complex, Basundhara R/A, Dhaka - 1229, Bangladesh",
   socials: [
-    { name: "LinkedIn", href: "https://linkedin.com", icon: "Linkedin" },
-    { name: "GitHub", href: "https://github.com", icon: "Github" },
-    { name: "Facebook", href: "https://facebook.com", icon: "Facebook" },
-    { name: "Clutch", href: "https://clutch.co", icon: "ExternalLink" },
+    { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61585230855546", icon: "Facebook" },
+    { name: "Instagram", href: "https://www.instagram.com/falahsysltd?igsh=MTRncW1xMW0zb2FjZQ==", icon: "Instagram" },
+    { name: "WhatsApp", href: "https://wa.me/8801339904830", icon: "MessageCircle" },
+    { name: "LinkedIn", href: "#", icon: "Linkedin" },
   ],
 };
 
@@ -169,8 +201,9 @@ export const PROCESS_STEPS: ProcessStep[] = [
   { id: "2", title: "Strategy" },
   { id: "3", title: "Design" },
   { id: "4", title: "Development" },
-  { id: "5", title: "Launch" },
-  { id: "6", title: "Support" },
+  { id: "5", title: "Testing" },
+  { id: "6", title: "Launch" },
+  { id: "7", title: "Support" },
 ];
 
 export const VALUE_CARDS: ValueCard[] = [
@@ -181,7 +214,13 @@ export const VALUE_CARDS: ValueCard[] = [
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
-  { id: "1", name: "Team Lead", role: "Founder & Creative Director", avatarInitial: "T", linkedIn: "#" },
-  { id: "2", name: "Tech Lead", role: "Head of Development", avatarInitial: "D", linkedIn: "#" },
-  { id: "3", name: "Design Lead", role: "Head of Design", avatarInitial: "D", linkedIn: "#" },
+  { id: "1", name: "S. M. Mahedi Hasan", role: "Founder & CEO", avatarInitial: "M", linkedIn: "#" },
+  { id: "2", name: "Mahadi Hasan", role: "Co-Founder and Head of Artificial Intelligence", avatarInitial: "M", linkedIn: "#" },
+  { id: "3", name: "Riad Safowan", role: "Co-Founder and Head of Full Stack Development", avatarInitial: "R", linkedIn: "#" },
 ];
+
+export const TOOLS = {
+  programming: ["Springboot", "AWS", "MongoDB", "Firebase", "Flutter", "Kotlin"],
+  digitalMarketing: ["Google Analytics", "Facebook Ads Manager", "Google Ads", "Mailchimp"],
+  graphicDesign: ["Adobe Photoshop", "Adobe Illustrator", "Canva", "Adobe After Effects", "Adobe Premiere Pro"],
+};

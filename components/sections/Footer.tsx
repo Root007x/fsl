@@ -3,15 +3,16 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { COMPANY, CONTACT_INFO } from "@/constants";
-import { Linkedin, Github, Facebook, ExternalLink } from "lucide-react";
+import { Linkedin, Facebook, Instagram, MessageCircle } from "lucide-react";
 
-const socialIcons = { Linkedin, Github, Facebook, ExternalLink };
+const socialIcons = { Linkedin, Facebook, Instagram, MessageCircle };
 
 export function Footer() {
   const servicesLinks = [
     { label: "Creative Design", href: "/#services" },
-    { label: "Web Design & Development", href: "/#services" },
-    { label: "Digital Marketing", href: "/#services" },
+    { label: "Web & Software Development", href: "/#services" },
+    { label: "Mobile Application Development", href: "/#services" },
+    { label: "Digital Marketing & Growth", href: "/#services" },
   ];
   const companyLinks = [
     { label: "About", href: "/about" },
@@ -59,18 +60,30 @@ export function Footer() {
             <h3 className="font-semibold text-foreground mb-4">Social</h3>
             <ul className="flex gap-4">
               {CONTACT_INFO.socials.map((social) => {
-                const Icon = socialIcons[social.icon as keyof typeof socialIcons] ?? ExternalLink;
+                const Icon = socialIcons[social.icon as keyof typeof socialIcons];
+                if (!Icon) return null;
+                const isPlaceholder = social.href === "#";
                 return (
                   <li key={social.name}>
-                    <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-accent transition-colors p-1 rounded focus-visible:ring-2 focus-visible:ring-accent"
-                      aria-label={social.name}
-                    >
-                      <Icon size={20} />
-                    </a>
+                    {isPlaceholder ? (
+                      <span
+                        className="text-muted-foreground/60 cursor-not-allowed p-1 rounded"
+                        title="Coming soon"
+                        aria-label={`${social.name} (Coming soon)`}
+                      >
+                        <Icon size={20} />
+                      </span>
+                    ) : (
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-accent transition-colors p-1 rounded focus-visible:ring-2 focus-visible:ring-accent"
+                        aria-label={social.name}
+                      >
+                        <Icon size={20} />
+                      </a>
+                    )}
                   </li>
                 );
               })}
@@ -82,10 +95,10 @@ export function Footer() {
             © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+            <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-accent transition-colors">
               Privacy
             </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+            <Link href="/terms" className="text-sm text-muted-foreground hover:text-accent transition-colors">
               Terms
             </Link>
           </div>

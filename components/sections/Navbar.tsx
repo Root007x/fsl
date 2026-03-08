@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -12,14 +13,64 @@ import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Track hash so active link highlights correctly (hash is not part of pathname)
+  useEffect(() => {
+    const updateHash = () => setCurrentHash(window.location.hash);
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+    window.addEventListener("popstate", updateHash);
+    return () => {
+      window.removeEventListener("hashchange", updateHash);
+      window.removeEventListener("popstate", updateHash);
+    };
+  }, []);
+
+  function isActive(href: string) {
+    if (href === "/") {
+      // Home is only active when on "/" with no hash
+      return pathname === "/" && currentHash === "";
+    }
+    if (href.startsWith("/#")) {
+      // Hash section links
+      return pathname === "/" && currentHash === href.slice(1); // e.g. "#services"
+    }
+    return pathname === href || (href !== "/" && pathname.startsWith(href));
+  }
+
+  // Clicking Home while already on "/" → smooth scroll to top + clear hash
+  function handleHomeClick(e: React.MouseEvent) {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setCurrentHash("");
+      router.replace("/", { scroll: false });
+    } else {
+      setCurrentHash("");
+    }
+  }
+
+  // Handle click on any nav link — update activeHash immediately
+  // (Next.js App Router does NOT fire hashchange for its own navigation)
+  function handleNavClick(href: string) {
+    if (href.startsWith("/#")) {
+      setCurrentHash(href.slice(1)); // e.g. "#services"
+    } else if (href === "/") {
+      setCurrentHash("");
+    } else {
+      setCurrentHash("");
+    }
+  }
 
   return (
     <>
@@ -30,8 +81,8 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
-            ? "bg-white/90 backdrop-blur-md border-b border-gray-200"
-            : "bg-transparent"
+            ? "bg-white shadow-sm border-b border-gray-100"
+            : "bg-white border-b border-gray-100/60"
         )}
       >
         <Container>
@@ -39,13 +90,21 @@ export function Navbar() {
             className="flex items-center justify-between h-16 md:h-20"
             aria-label="Main navigation"
           >
+            {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-1.5 font-bold text-xl text-foreground hover:text-accent transition-colors focus-visible:outline focus-visible:ring-2 focus-visible:ring-accent rounded"
+              onClick={handleHomeClick}
+              className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
               aria-label={`${COMPANY.name} - Home`}
             >
-              {COMPANY.name}
-              <span className="w-2 h-2 rounded-full bg-accent" aria-hidden />
+              <Image 
+                src="/logo.png" 
+                alt={`${COMPANY.name} Logo`} 
+                width={180} 
+                height={60} 
+                className="w-auto h-10 md:h-12 object-contain" 
+                priority 
+              />
             </Link>
 
             {/* Desktop nav */}
@@ -54,11 +113,13 @@ export function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    onClick={(e) => {
+                      if (link.href === "/") handleHomeClick(e);
+                      else handleNavClick(link.href);
+                    }}
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-accent",
-                      pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
-                        ? "text-accent"
-                        : "text-muted-foreground"
+                      "text-sm font-medium transition-colors hover:text-accent rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                      isActive(link.href) ? "text-accent" : "text-muted-foreground"
                     )}
                   >
                     {link.label}
@@ -118,10 +179,14 @@ export function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={(e) => {
+                        setMobileOpen(false);
+                        if (link.href === "/") handleHomeClick(e);
+                        else handleNavClick(link.href);
+                      }}
                       className={cn(
-                        "text-2xl font-medium",
-                        pathname === link.href ? "text-accent" : "text-foreground"
+                        "text-2xl font-medium focus:outline-none",
+                        isActive(link.href) ? "text-accent" : "text-foreground"
                       )}
                     >
                       {link.label}

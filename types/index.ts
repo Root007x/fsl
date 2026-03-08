@@ -21,7 +21,7 @@ export interface Project {
   year: string;
   description: string;
   tags: string[];
-  imagePlaceholder?: string;
+  image?: string;
 }
 
 export interface Testimonial {
@@ -77,6 +77,7 @@ export interface ContactFormData {
   email: string;
   company: string;
   service: string;
+  budget: string;
   message: string;
 }
 
@@ -85,5 +86,6 @@ export interface ContactFormErrors {
   email?: string;
   company?: string;
   service?: string;
+  budget?: string;
   message?: string;
 }

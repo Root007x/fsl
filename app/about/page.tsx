@@ -9,6 +9,7 @@ import {
   PROCESS_STEPS,
   VALUE_CARDS,
   TEAM_MEMBERS,
+  TOOLS,
 } from "@/constants";
 import { Target, Lightbulb, Shield, Eye, Linkedin } from "lucide-react";
 
@@ -27,10 +28,10 @@ export default function AboutPage() {
             className="max-w-3xl"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              We Are Falahsys — A Team Obsessed With Craft
+              We Are Falahsys — A Team Focused on Building Smart Digital Solutions
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We believe in building digital products that make a difference. From brand identity to web development and digital marketing, we combine precision, innovation, and transparency to deliver results that help our clients grow.
+              At Falahsys, we help businesses grow by building powerful digital systems and modern online experiences. From custom websites and ERP solutions to mobile applications and digital marketing, we combine technology, creativity, and strategic thinking to deliver reliable solutions that drive real business growth.
             </p>
           </motion.div>
         </Container>
@@ -116,27 +117,49 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Tech stack */}
+      {/* Tools */}
       <section className="py-16 md:py-24 bg-muted/50">
         <Container>
           <SectionHeading
-            eyebrow="Tech Stack"
-            title="Tools We Use"
+            eyebrow="Tools"
+            title="Technologies We Use"
           />
           <motion.div
-            className="flex flex-wrap gap-4 justify-center"
+            className="space-y-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            {["React", "Next.js", "Node.js", "Figma", "TailwindCSS", "TypeScript", "PostgreSQL"].map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 rounded-lg bg-muted border border-gray-200 text-muted-foreground font-medium text-sm"
-              >
-                {tech}
-              </span>
-            ))}
+            <div>
+              <h3 className="text-sm font-semibold text-foreground mb-3">Programming</h3>
+              <div className="flex flex-wrap gap-2">
+                {TOOLS.programming.map((tech) => (
+                  <span className="px-4 py-2 rounded-lg bg-muted border border-gray-200 text-muted-foreground font-medium text-sm" key={tech}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground mb-3">Digital Marketing</h3>
+              <div className="flex flex-wrap gap-2">
+                {TOOLS.digitalMarketing.map((tech) => (
+                  <span className="px-4 py-2 rounded-lg bg-muted border border-gray-200 text-muted-foreground font-medium text-sm" key={tech}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground mb-3">Graphic Design</h3>
+              <div className="flex flex-wrap gap-2">
+                {TOOLS.graphicDesign.map((tech) => (
+                  <span className="px-4 py-2 rounded-lg bg-muted border border-gray-200 text-muted-foreground font-medium text-sm" key={tech}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </Container>
       </section>

@@ -6,9 +6,9 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { SERVICES } from "@/constants";
-import { Palette, Globe, TrendingUp, ArrowRight } from "lucide-react";
+import { Palette, Globe, TrendingUp, Smartphone, ArrowRight } from "lucide-react";
 
-const iconMap = { Palette, Globe, TrendingUp };
+const iconMap = { Palette, Globe, TrendingUp, Smartphone };
 
 export function Services() {
   return (
@@ -16,11 +16,11 @@ export function Services() {
       <Container>
         <SectionHeading
           eyebrow="What We Do"
-          title="Solving Complex Problems With Design & Technology"
+          title="Services"
           id="services-heading"
         />
         <motion.div
-          className="grid md:grid-cols-3 gap-6 lg:gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}

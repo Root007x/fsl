@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -83,11 +84,24 @@ export function Portfolio() {
                 transition={{ duration: 0.3 }}
                 className="group relative rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm backdrop-blur-md"
               >
-                {/* Gradient placeholder image */}
-                <div
-                  className="aspect-video bg-gradient-to-br from-accent/30 via-accent/10 to-transparent"
-                  aria-hidden
-                />
+                {/* Project image or gradient placeholder */}
+                {project.image ? (
+                  <div className="aspect-video relative">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      unoptimized
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="aspect-video bg-gradient-to-br from-accent/30 via-accent/10 to-transparent"
+                    aria-hidden
+                  />
+                )}
                 <div className="p-5">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     <span className="text-foreground font-bold">{project.name}</span>

@@ -6,11 +6,11 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { CONTACT_INFO, SERVICE_OPTIONS } from "@/constants";
+import { CONTACT_INFO, CONTACT_SERVICE_OPTIONS } from "@/constants";
 import type { ContactFormData, ContactFormErrors } from "@/types";
-import { Mail, Phone, MapPin, Linkedin, Github, Facebook, ExternalLink, Check } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle, Check } from "lucide-react";
 
-const socialIcons = { Linkedin, Github, Facebook, ExternalLink };
+const socialIcons = { Linkedin, Facebook, Instagram, MessageCircle };
 
 function validateForm(data: ContactFormData): ContactFormErrors {
   const errors: ContactFormErrors = {};
@@ -19,6 +19,7 @@ function validateForm(data: ContactFormData): ContactFormErrors {
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.email = "Invalid email address";
   if (!data.company.trim()) errors.company = "Company is required";
   if (!data.service) errors.service = "Please select a service";
+  if (data.budget.trim() && !/^\d+$/.test(data.budget.trim())) errors.budget = "Budget must be numeric only";
   if (!data.message.trim()) errors.message = "Message is required";
   return errors;
 }
@@ -29,6 +30,7 @@ export default function ContactPage() {
     email: "",
     company: "",
     service: "",
+    budget: "",
     message: "",
   });
   const [errors, setErrors] = useState<ContactFormErrors>({});
@@ -68,7 +70,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-20 overflow-x-hidden">
       <Container className="mb-16">
         <SectionHeading
           eyebrow="Get In Touch"
@@ -81,8 +83,8 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Contact info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             className="space-y-6"
           >
             <Card className="p-6">
@@ -132,8 +134,19 @@ export default function ContactPage() {
             )}
             <div className="flex gap-4 pt-2">
               {CONTACT_INFO.socials.map((social) => {
-                const Icon = socialIcons[social.icon as keyof typeof socialIcons] ?? ExternalLink;
-                return (
+                const Icon = socialIcons[social.icon as keyof typeof socialIcons];
+                if (!Icon) return null;
+                const isPlaceholder = social.href === "#";
+                return isPlaceholder ? (
+                  <span
+                    key={social.name}
+                    className="w-10 h-10 rounded-lg bg-muted border border-gray-200 flex items-center justify-center text-muted-foreground/60 cursor-not-allowed"
+                    title="Coming soon"
+                    aria-label={`${social.name} (Coming soon)`}
+                  >
+                    <Icon size={20} />
+                  </span>
+                ) : (
                   <a
                     key={social.name}
                     href={social.href}
@@ -151,8 +164,8 @@ export default function ContactPage() {
 
           {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
             <Card className="p-6 md:p-8">
@@ -230,7 +243,7 @@ export default function ContactPage() {
                     aria-describedby={errors.service ? "service-error" : undefined}
                   >
                     <option value="">Select a service</option>
-                    {SERVICE_OPTIONS.map((opt) => (
+                    {CONTACT_SERVICE_OPTIONS.map((opt) => (
                       <option key={opt.value} value={opt.value}>
                         {opt.label}
                       </option>
@@ -239,6 +252,28 @@ export default function ContactPage() {
                   {errors.service && (
                     <p id="service-error" className="mt-1 text-sm text-red-400" role="alert">
                       {errors.service}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-2">
+                    Budget (optional)
+                  </label>
+                  <input
+                    id="budget"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={formData.budget}
+                    onChange={(e) => setFormData((p) => ({ ...p, budget: e.target.value.replace(/\D/g, "") }))}
+                    className="w-full px-4 py-3 rounded-lg bg-background border border-gray-200 text-foreground placeholder:text-muted-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
+                    placeholder="Numeric only (e.g. 5000)"
+                    aria-invalid={!!errors.budget}
+                    aria-describedby={errors.budget ? "budget-error" : undefined}
+                  />
+                  {errors.budget && (
+                    <p id="budget-error" className="mt-1 text-sm text-red-400" role="alert">
+                      {errors.budget}
                     </p>
                   )}
                 </div>
