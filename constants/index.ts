@@ -85,6 +85,21 @@ export const SERVICES: Service[] = [
     ],
     href: "/contact",
   },
+  {
+    id: "devops-scalable-infrastructure",
+    title: "DevOps & Scalable Infrastructure",
+    description: "We build reliable, automated, and scalable infrastructure that ensures your applications run efficiently, deploy faster, and handle growth smoothly.",
+    icon: "Server",
+    subServices: [
+      "CI/CD Pipeline Setup",
+      "Docker & Containerization",
+      "Cloud Infrastructure (AWS / GCP / Azure)",
+      "Infrastructure as Code (Terraform / Ansible)",
+      "Monitoring & Performance Optimization",
+      "Microservices Deployment",
+    ],
+    href: "/contact",
+  },
 ];
 
 /** Contact form service dropdown options */

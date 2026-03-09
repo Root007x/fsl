@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { AnimatedText } from "@/components/ui/AnimatedText";
-import { STATS } from "@/constants";
 import { ChevronDown, Globe2, Zap, Users } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────────
@@ -433,22 +432,6 @@ export function Hero() {
             No long-term contracts · Average delivery 4–8 weeks
           </motion.p>
 
-          {/* Stats — 2×2 grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.55 }}
-            className="mt-12 grid grid-cols-2 gap-x-12 gap-y-5"
-          >
-            {STATS.map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-0.5">
-                <span className="text-2xl font-bold text-amber-400 lg:text-slate-900">{stat.value}</span>
-                <span className="text-[11px] uppercase tracking-[0.18em] text-amber-400/80 lg:text-slate-400">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </motion.div>
 
           {/* Scroll cue */}
           <motion.a

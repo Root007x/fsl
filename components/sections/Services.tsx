@@ -6,9 +6,9 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { SERVICES } from "@/constants";
-import { Palette, Globe, TrendingUp, Smartphone, ArrowRight, Brain } from "lucide-react";
+import { Palette, Globe, TrendingUp, Smartphone, ArrowRight, Brain, Server } from "lucide-react";
 
-const iconMap = { Palette, Globe, TrendingUp, Smartphone, Brain };
+const iconMap = { Palette, Globe, TrendingUp, Smartphone, Brain, Server };
 
 export function Services() {
   return (
@@ -45,7 +45,7 @@ export function Services() {
                   as="article"
                   className="group h-full flex flex-col"
                 >
-                  <div className="mb-4 inline-flex w-12 h-12 rounded-xl bg-accent/20 items-center justify-center text-accent transition-transform duration-300 group-hover:rotate-6">
+                  <div className="mb-4 inline-flex w-12 h-12 rounded-xl bg-accent/20 items-center justify-center text-accent transition-all duration-300 group-hover:animate-shake">
                     <Icon size={24} aria-hidden />
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-2">{service.title}</h3>

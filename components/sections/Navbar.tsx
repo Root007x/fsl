@@ -118,7 +118,7 @@ export function Navbar() {
                       else handleNavClick(link.href);
                     }}
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-accent rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
+                      "text-base font-medium transition-colors hover:text-accent rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50",
                       isActive(link.href) ? "text-accent" : "text-muted-foreground"
                     )}
                   >
