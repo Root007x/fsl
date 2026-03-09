@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { BackToTop } from "@/components/ui/BackToTop";
+import { SplashScreen } from "@/components/ui/SplashScreen";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+        <SplashScreen />
         <Navbar />
         <main id="main">{children}</main>
         <Footer />

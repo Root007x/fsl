@@ -151,7 +151,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <Container className="text-center">
           <h2 className="text-3xl font-bold text-foreground mb-6">Ready to start your own project?</h2>
           <Button href="/contact" variant="primary" size="lg">
-            Let's Talk
+            Let&apos;s Talk
           </Button>
         </Container>
       </section>
