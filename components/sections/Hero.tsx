@@ -163,7 +163,7 @@ function GlobeCanvas() {
         for (let lon = 0; lon <= 360; lon += 3) {
           const p = project(lat, lon, rotY, cx, cy, R);
           if (!p.visible) { first = true; continue; }
-          first ? ctx.moveTo(p.sx, p.sy) : ctx.lineTo(p.sx, p.sy);
+          if (first) { ctx.moveTo(p.sx, p.sy); } else { ctx.lineTo(p.sx, p.sy); }
           first = false;
         }
         ctx.strokeStyle = "rgba(120,150,255,0.28)";
@@ -178,7 +178,7 @@ function GlobeCanvas() {
         for (let lat = -85; lat <= 85; lat += 3) {
           const p = project(lat, lon, rotY, cx, cy, R);
           if (!p.visible) { first = true; continue; }
-          first ? ctx.moveTo(p.sx, p.sy) : ctx.lineTo(p.sx, p.sy);
+          if (first) { ctx.moveTo(p.sx, p.sy); } else { ctx.lineTo(p.sx, p.sy); }
           first = false;
         }
         ctx.strokeStyle = "rgba(120,150,255,0.28)";
@@ -220,11 +220,8 @@ function GlobeCanvas() {
           const liftR = R * (1 + 0.18 * Math.sin(Math.PI * frac));
           const p = project(lat, lon, rotY, cx, cy, liftR);
           if (!p.visible) { started = false; continue; }
-          const alphaFrac = (frac - tTail) / (tHead - tTail);
-          const alpha = Math.sin(alphaFrac * Math.PI) * 0.9;
           if (!started) { ctx.beginPath(); started = true; ctx.moveTo(p.sx, p.sy); }
           else ctx.lineTo(p.sx, p.sy);
-          _ = alpha; // used below
         }
         ctx.strokeStyle = arc.color + "0.7)";
         ctx.lineWidth   = 1.6;
@@ -282,9 +279,6 @@ function GlobeCanvas() {
 
       raf = requestAnimationFrame(draw);
     }
-
-    // eslint-disable-next-line prefer-const
-    let _: number = 0; // suppress unused warning (used in loop)
 
     function resize() {
       if (!canvas) return;
