@@ -213,7 +213,7 @@ export default function AboutPage() {
                         src={member.image}
                         alt={member.name}
                         fill
-                        unoptimized
+                        sizes="128px"
                         className="object-cover object-top"
                       />
                     ) : (
