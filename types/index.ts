@@ -22,6 +22,15 @@ export interface Project {
   description: string;
   tags: string[];
   image?: string;
+  // Detailed case study fields
+  introduction?: string;
+  client?: string;
+  servicesProvided?: string[];
+  technologiesUsed?: string[];
+  creativeTools?: string[];
+  challenges?: string;
+  solution?: string;
+  keyResults?: string[];
 }
 
 export interface Testimonial {

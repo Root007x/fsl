@@ -85,62 +85,94 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="grid md:grid-cols-3 gap-12 lg:gap-20">
             {/* Left Col: Details & Tags */}
             <div className="md:col-span-1 space-y-10">
-              <div>
-                <h3 className="text-lg font-bold text-foreground mb-4 border-b border-gray-100 pb-2">Client</h3>
-                <p className="text-muted-foreground">{project.name} Inc.</p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-bold text-foreground mb-4 border-b border-gray-100 pb-2">Services Provided</h3>
-                <ul className="space-y-2">
-                  {project.tags.map(tag => (
-                    <li key={tag} className="text-muted-foreground flex items-start gap-2">
-                      <CheckCircle2 size={18} className="text-accent mt-0.5 shrink-0" />
-                      <span>{tag}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold text-foreground mb-4 border-b border-gray-100 pb-2">Technologies Used</h3>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1.5 bg-muted rounded-md text-sm font-medium text-muted-foreground">React</span>
-                  <span className="px-3 py-1.5 bg-muted rounded-md text-sm font-medium text-muted-foreground">Next.js</span>
-                  <span className="px-3 py-1.5 bg-muted rounded-md text-sm font-medium text-muted-foreground">Tailwind CSS</span>
+              {project.client && (
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-4 border-b border-gray-100 pb-2">Client</h3>
+                  <p className="text-muted-foreground">{project.client}</p>
                 </div>
-              </div>
+              )}
+              
+              {(project.servicesProvided || project.tags) && (
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-4 border-b border-gray-100 pb-2">Services Provided</h3>
+                  <ul className="space-y-2">
+                    {(project.servicesProvided || project.tags).map(tag => (
+                      <li key={tag} className="text-muted-foreground flex items-start gap-2">
+                        <CheckCircle2 size={18} className="text-accent mt-0.5 shrink-0" />
+                        <span>{tag}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {project.technologiesUsed && (
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-4 border-b border-gray-100 pb-2">Technologies Used</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologiesUsed.map(tech => (
+                      <span key={tech} className="px-3 py-1.5 bg-muted rounded-md text-sm font-medium text-muted-foreground">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {project.creativeTools && (
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-4 border-b border-gray-100 pb-2">Creative & Marketing Tools</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.creativeTools.map(tool => (
+                      <span key={tool} className="px-3 py-1.5 bg-accent/5 rounded-md text-sm font-medium text-muted-foreground">{tool}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right Col: Story / Narrative */}
             <div className="md:col-span-2 prose prose-lg prose-slate max-w-none">
-              <h2 className="text-3xl font-bold text-foreground mb-6">The Challenge</h2>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              </p>
+              {project.introduction && (
+                <>
+                  <h2 className="text-3xl font-bold text-foreground mb-6 mt-0">Introduction</h2>
+                  <p className="text-muted-foreground mb-8 leading-relaxed">
+                    {project.introduction}
+                  </p>
+                </>
+              )}
 
-              <h2 className="text-3xl font-bold text-foreground mb-6">Our Solution</h2>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              </p>
+              {project.challenges && (
+                <>
+                  <h2 className="text-3xl font-bold text-foreground mb-6">The Challenge</h2>
+                  <p className="text-muted-foreground mb-8 leading-relaxed">
+                    {project.challenges}
+                  </p>
+                </>
+              )}
 
-              <div className="bg-muted/50 p-8 rounded-2xl border border-gray-100 my-10">
-                <h3 className="text-xl font-bold text-foreground mb-4">Key Results</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-muted-foreground">
-                    <span className="text-accent font-bold">1</span>
-                    Increased user engagement by 150%
-                  </li>
-                  <li className="flex items-start gap-3 text-muted-foreground">
-                    <span className="text-accent font-bold">2</span>
-                    Reduced load times from 4.2s to 0.8s
-                  </li>
-                  <li className="flex items-start gap-3 text-muted-foreground">
-                    <span className="text-accent font-bold">3</span>
-                    Successfully launched on time and within budget
-                  </li>
-                </ul>
-              </div>
+              {project.solution && (
+                <>
+                  <h2 className="text-3xl font-bold text-foreground mb-6">Our Solution</h2>
+                  <p className="text-muted-foreground mb-8 leading-relaxed">
+                    {project.solution}
+                  </p>
+                </>
+              )}
+
+              {project.keyResults && (
+                <div className="bg-muted/50 p-8 rounded-2xl border border-gray-100 my-10">
+                  <h3 className="text-xl font-bold text-foreground mb-6">Key Results</h3>
+                  <ul className="space-y-4 m-0 p-0 list-none">
+                    {project.keyResults.map((result, i) => (
+                      <li key={i} className="flex items-start gap-4 p-0 m-0">
+                        <span className="flex items-center justify-center shrink-0 w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm">
+                          {i + 1}
+                        </span>
+                        <span className="text-muted-foreground mt-1 leading-relaxed">{result}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </Container>

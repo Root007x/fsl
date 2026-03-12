@@ -132,6 +132,49 @@ export const PROJECTS: Project[] = [
     description: "Education platform delivering quality learning experiences.",
     tags: ["Website Design", "Web Development"],
     image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Kepler+Academy",
+    introduction: "Kepler Academy is an education platform delivering high-quality learning experiences through a modern digital ecosystem powered by LMS and ERP solutions.",
+    client: "Kepler Academy",
+    servicesProvided: [
+      "Website Design",
+      "Web Development",
+      "LMS Development",
+      "ERP System",
+      "Digital Marketing Support",
+      "Creative Content"
+    ],
+    technologiesUsed: [
+      "React JS",
+      "Next JS",
+      "Express",
+      "Node.js",
+      "Spring Boot",
+      "MongoDB",
+      "PostgreSQL",
+      "Docker",
+      "AWS"
+    ],
+    creativeTools: [
+      "Facebook Pixel",
+      "Google Analytics",
+      "Facebook Ads Manager",
+      "Google Ads",
+      "Mailchimp",
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Canva",
+      "Adobe After Effects",
+      "Adobe Premiere Pro"
+    ],
+    challenges: "Kepler Academy faced several barriers in growing its education business online. The institution had limited digital presence, which made it difficult to reach students beyond their local network. Student enrollment and lead management were handled manually, causing inefficiencies and lost inquiries. The absence of a structured LMS and ERP system made it hard to manage courses, student data, and academic operations effectively. Additionally, their marketing campaigns lacked strong creative content and data tracking, resulting in low engagement and poor conversion rates.",
+    solution: "Falahsys delivered a complete digital transformation by designing and developing a modern, scalable website integrated with a powerful LMS and ERP system. This allowed Kepler Academy to manage courses, students, and operations from a single platform. We also implemented data-driven digital marketing strategies using tools like Facebook Pixel, Google Analytics, and targeted ad campaigns. Creative content and optimized marketing assets were developed to strengthen brand credibility and attract more students.",
+    keyResults: [
+      "Significant increase in online student inquiries and enrollments",
+      "Automated student registration, course management, and academic operations",
+      "Improved lead tracking and higher marketing conversion rates",
+      "Stronger online brand presence and credibility",
+      "Expanded reach beyond local geographic boundaries",
+      "Scalable infrastructure for future growth"
+    ]
   },
   {
     id: "skylab-education",
@@ -141,6 +184,25 @@ export const PROJECTS: Project[] = [
     description: "Innovative educational solutions and digital learning.",
     tags: ["Web Development"],
     image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Skylab+Education",
+    introduction: "Skylab Education is a Bangladesh-based study abroad consultancy helping students pursue higher education in destinations such as the USA, UK, Australia, Canada, New Zealand, Europe, and Asia.",
+    servicesProvided: [
+      "Web Design",
+      "Web Development",
+      "ERP System",
+      "LMS",
+      "Digital Marketing",
+      "Creative Content"
+    ],
+    challenges: "Skylab Education faced difficulties managing a high volume of student inquiries from multiple channels including social media, phone calls, and in-person visits. Their previous system lacked a centralized platform to manage student applications and counseling efficiently. Manual record keeping made it difficult to track documents, applications, and communication with students, which slowed down operations and delayed responses.",
+    solution: "Falahsys developed a modern website and implemented a customized ERP system to centralize student data, track application processes, and manage counseling workflows. The integrated platform streamlined operations and allowed the team to handle leads, documents, and student communication more efficiently.",
+    keyResults: [
+      "Improved online credibility and professional digital presence",
+      "Faster response time to student inquiries",
+      "Centralized student application and document tracking",
+      "Reduced manual workload through automation",
+      "Organized management of counseling processes",
+      "Better operational efficiency and scalability"
+    ]
   },
   {
     id: "sulekkho",
@@ -150,6 +212,26 @@ export const PROJECTS: Project[] = [
     description: "Digital platform for streamlined services.",
     tags: ["Web Development"],
     image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Sulekkho",
+    introduction: "Sulekkho is a Bangladesh-based fashion and lifestyle brand offering over 1,900 products including clothing, jewelry, ornaments, and handcrafted items. The company also operates Sulekkho Fine Art & Craft Coaching Center as a sister concern.",
+    servicesProvided: [
+      "Web Design",
+      "Web Development",
+      "ERP System",
+      "LMS",
+      "Mobile Application",
+      "Digital Marketing",
+      "Creative Content"
+    ],
+    challenges: "Sulekkho faced challenges managing a large product catalog and maintaining a strong online presence. Inventory, customer inquiries, and product management were handled through scattered systems, making operations inefficient. Additionally, their Fine Art & Craft Coaching Center required a separate system to manage courses and students. Without a unified platform, scaling both the retail and education businesses was becoming difficult.",
+    solution: "Falahsys built a modern digital ecosystem including a professional website, ERP system, LMS platform, and mobile application. The ERP streamlined inventory and product management, while the LMS supported the coaching center by managing courses and students. Digital marketing strategies and creative content were also implemented to strengthen the brand’s online visibility.",
+    keyResults: [
+      "Centralized management of products and inventory",
+      "Professional platform showcasing 1,900+ fashion products",
+      "Efficient system for managing the coaching center",
+      "Increased brand visibility through digital marketing",
+      "Better customer engagement with creative content",
+      "Scalable infrastructure for future expansion"
+    ]
   },
   {
     id: "bari-computer-trading",
@@ -159,7 +241,25 @@ export const PROJECTS: Project[] = [
     description: "Computer and technology trading company.",
     tags: ["Brand Design"],
     image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Bari+Computer+Trading",
-  },
+    introduction: "Bari Computer Trading Co. is a Bangladesh-based technology retailer supplying printers, toners, scanners, photocopy machines, and related accessories through both a physical store and an online e-commerce platform.",
+    servicesProvided: [
+      "Web Design",
+      "Web Development",
+      "ERP System",
+      "Digital Marketing",
+      "Creative Content"
+    ],
+    challenges: "The company struggled to manage both offline and online sales efficiently. Inventory updates, product listings, and customer inquiries were handled manually, which caused stock mismatches and delayed responses. Their digital presence was limited, making it difficult to compete with larger online electronics retailers.",
+    solution: "Falahsys developed a modern e-commerce website integrated with an ERP system to centralize inventory management, product listings, and order processing. We also implemented digital marketing strategies and creative content to increase product visibility and attract more customers online.",
+    keyResults: [
+      "Professional e-commerce platform for technology products",
+      "Centralized inventory and order management system",
+      "Improved online visibility through digital marketing",
+      "Faster response to customer inquiries and orders",
+      "High-quality product presentation and listings",
+      "Increased scalability for both online and offline sales"
+    ]
+  }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -212,8 +312,8 @@ export const CONTACT_INFO: ContactInfo = {
   socials: [
     { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61585230855546", icon: "Facebook" },
     { name: "Instagram", href: "https://www.instagram.com/falahsysltd?igsh=MTRncW1xMW0zb2FjZQ==", icon: "Instagram" },
-    { name: "WhatsApp", href: "https://wa.me/8801339904830", icon: "MessageCircle" },
-    { name: "LinkedIn", href: "#", icon: "Linkedin" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/company/falahsys", icon: "Linkedin" },
+    { name: "Twitter", href: "https://twitter.com/falahsys", icon: "Twitter" },
   ],
 };
 

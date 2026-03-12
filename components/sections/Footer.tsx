@@ -1,20 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { COMPANY, CONTACT_INFO } from "@/constants";
-import { Linkedin, Facebook, Instagram, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Linkedin, Facebook, Instagram, Twitter, ArrowUpRight } from "lucide-react";
+import { PrivacyModal } from "@/components/sections/PrivacyModal";
+import { TermsModal } from "@/components/sections/TermsModal";
 
-const socialIcons = { Linkedin, Facebook, Instagram, MessageCircle };
+const socialIcons = { Linkedin, Facebook, Instagram, Twitter };
 
 export function Footer() {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+
   const servicesLinks = [
-    { label: "Creative Design", href: "/#services" },
-    { label: "Web & Software Development", href: "/#services" },
-    { label: "Mobile Application Development", href: "/#services" },
-    { label: "Digital Marketing & Growth", href: "/#services" },
+    { label: "Website Design & Dev", href: "/#services" },
+    { label: "ERP Software", href: "/#services" },
+    { label: "Mobile Application", href: "/#services" },
+    { label: "Digital Marketing", href: "/#services" },
   ];
   const companyLinks = [
     { label: "About", href: "/about" },
@@ -62,7 +68,7 @@ export function Footer() {
               <span className="text-accent">.</span>
             </Link>
             <p className="text-white/60 max-w-sm mb-6 leading-relaxed text-sm md:text-base">
-              {COMPANY.tagline}
+              Software & Digital Solutions for SMEs
             </p>
             <div className="flex gap-3">
               {CONTACT_INFO.socials.map((social) => {
@@ -138,12 +144,18 @@ export function Footer() {
             © {new Date().getFullYear()} {COMPANY.name}. Crafted with precision.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="text-sm text-white/50 hover:text-white transition-colors">
+            <button 
+              onClick={() => setIsPrivacyOpen(true)}
+              className="text-sm text-white/50 hover:text-white transition-colors cursor-pointer"
+            >
               Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-sm text-white/50 hover:text-white transition-colors">
+            </button>
+            <button 
+              onClick={() => setIsTermsOpen(true)}
+              className="text-sm text-white/50 hover:text-white transition-colors cursor-pointer"
+            >
               Terms of Service
-            </Link>
+            </button>
             <div 
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#070B18] hover:bg-white transition-colors cursor-pointer"
@@ -153,6 +165,9 @@ export function Footer() {
           </div>
         </div>
       </Container>
+      
+      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+      <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
     </footer>
   );
 }
