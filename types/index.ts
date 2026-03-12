@@ -65,6 +65,7 @@ export interface TeamMember {
   name: string;
   role: string;
   avatarInitial: string;
+  image?: string;
   linkedIn?: string;
 }
 

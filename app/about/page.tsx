@@ -1,6 +1,7 @@
 "use client";
-
+import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -14,6 +15,24 @@ import {
 import { Target, Lightbulb, Shield, Eye } from "lucide-react";
 
 const valueIcons = { Target, Lightbulb, Shield, Eye };
+
+function TechIcon({ icon, name }: { icon: string; name: string }) {
+  const [hasError, setHasError] = React.useState(false);
+
+  if (hasError) return null;
+
+  return (
+    <Image
+      src={`https://cdn.simpleicons.org/${icon}`}
+      alt={name}
+      width={18}
+      height={18}
+      unoptimized
+      className="shrink-0 group-hover:scale-110 transition-transform"
+      onError={() => setHasError(true)}
+    />
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -125,44 +144,41 @@ export default function AboutPage() {
             title="Technologies We Use"
           />
           <motion.div
-            className="space-y-8"
+            className="space-y-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">Programming</h3>
-              <div className="flex flex-wrap gap-2">
-                {TOOLS.programming.map((tech) => (
-                  <span className="px-4 py-2 rounded-lg bg-muted border border-gray-200 text-muted-foreground font-medium text-sm" key={tech}>
-                    {tech}
-                  </span>
-                ))}
+            {[
+              { label: "Web Technologies", key: "webTech" as const },
+              { label: "Libraries & Frameworks", key: "libraries" as const },
+              { label: "Mobile Development", key: "mobileDev" as const },
+              { label: "AI & Machine Learning", key: "ai" as const },
+              { label: "DevOps & Cloud", key: "devops" as const },
+              { label: "Digital Marketing", key: "digitalMarketing" as const },
+              { label: "Graphic Design", key: "graphicDesign" as const },
+            ].map(({ label, key }) => (
+              <div key={key}>
+                <h3 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-widest">{label}</h3>
+                <div className="flex flex-wrap gap-3">
+                  {TOOLS[key].map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-muted border border-gray-200 hover:border-accent hover:shadow-md transition-all group cursor-default"
+                    >
+                      <TechIcon icon={tech.icon} name={tech.name} />
+                      <span className="text-sm font-medium text-muted-foreground group-hover:text-accent transition-colors whitespace-nowrap">
+                        {tech.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">Digital Marketing</h3>
-              <div className="flex flex-wrap gap-2">
-                {TOOLS.digitalMarketing.map((tech) => (
-                  <span className="px-4 py-2 rounded-lg bg-muted border border-gray-200 text-muted-foreground font-medium text-sm" key={tech}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">Graphic Design</h3>
-              <div className="flex flex-wrap gap-2">
-                {TOOLS.graphicDesign.map((tech) => (
-                  <span className="px-4 py-2 rounded-lg bg-muted border border-gray-200 text-muted-foreground font-medium text-sm" key={tech}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+            ))}
           </motion.div>
         </Container>
       </section>
+
 
       {/* Team */}
       <section className="py-16 md:py-24">
@@ -190,14 +206,23 @@ export default function AboutPage() {
                 }}
                 className={`text-center ${index === 0 ? "md:order-2" : index === 1 ? "md:order-1" : "md:order-3"}`}
               >
-                <div
-                  className="w-24 h-24 rounded-full bg-accent/20 text-accent text-2xl font-bold flex items-center justify-center mx-auto mb-4"
-                  aria-hidden
-                >
-                  {member.avatarInitial}
+                <div className="relative w-32 h-32 mx-auto mb-6">
+                  <div className="relative w-full h-full rounded-full bg-muted border-2 border-accent/20 overflow-hidden flex items-center justify-center">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        unoptimized
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <span className="text-3xl font-bold text-accent">{member.avatarInitial}</span>
+                    )}
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-foreground">{member.name}</h3>
-                <p className="text-sm text-muted-foreground mb-3">{member.role}</p>
+                <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
+                <p className="text-sm font-medium text-accent/80 mb-3">{member.role}</p>
 
               </motion.article>
             ))}
