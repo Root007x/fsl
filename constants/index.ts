@@ -345,7 +345,7 @@ export const VALUE_CARDS: ValueCard[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   { id: "1", name: "S. M. Mahedi Hasan", role: "Founder & CEO", avatarInitial: "M", image: "/team/hasan.jpg", linkedIn: "#" },
-  { id: "2", name: "Mahadi Hasan", role: "Co-Founder and Head of Artificial Intelligence", avatarInitial: "M", image: "/team/mahadi.jpeg", linkedIn: "#" },
+  { id: "2", name: "Md. Mahadi Hasan", role: "Co-Founder and Head of Artificial Intelligence", avatarInitial: "M", image: "/team/mahadi.jpeg", linkedIn: "#" },
   { id: "3", name: "Riad Safowan", role: "Co-Founder and Head of Full Stack Development", avatarInitial: "R", image: "/team/riad.jpeg", linkedIn: "#" },
 ];
 
