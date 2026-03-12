@@ -124,7 +124,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-3">12. Contact Information</h2>
             <p className="font-medium text-foreground">Falahsys</p>
-            <p>Email: falahsystemsltd@gmail.com</p>
+            <p>Email: info@falahsys.com</p>
             <p>Phone: +880 1339-904830</p>
             <p>Address: Ka/4, Mamata Complex, Basundhara R/A, Dhaka - 1229, Bangladesh</p>
           </section>

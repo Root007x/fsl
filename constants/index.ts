@@ -306,7 +306,7 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const CONTACT_INFO: ContactInfo = {
-  email: "falahsystemsltd@gmail.com",
+  email: "info@falahsys.com",
   phone: "+880 1339-904830",
   address: "Ka/4, Mamata Complex, Basundhara R/A, Dhaka - 1229, Bangladesh",
   socials: [

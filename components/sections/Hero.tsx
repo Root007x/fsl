@@ -474,7 +474,8 @@ export function Hero() {
           {/* Floating card — top right */}
           <motion.div
             animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 4.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+            style={{ willChange: "transform" }}
             className="absolute top-20 right-6 z-20 flex flex-col gap-1.5
               rounded-2xl border border-white/10 bg-white/[0.05]
               px-5 py-4 shadow-[0_8px_40px_rgba(0,0,0,0.5)]
@@ -493,7 +494,8 @@ export function Hero() {
           {/* Floating card — middle left */}
           <motion.div
             animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 5.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+            style={{ willChange: "transform" }}
             className="absolute top-[42%] left-16 z-20 flex flex-col gap-1.5
               rounded-2xl border border-white/10 bg-white/[0.05]
               px-5 py-4 shadow-[0_8px_40px_rgba(0,0,0,0.5)]
@@ -516,7 +518,8 @@ export function Hero() {
           {/* Floating card — bottom right */}
           <motion.div
             animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 3.8, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+            style={{ willChange: "transform" }}
             className="absolute bottom-20 right-8 z-20 flex flex-col gap-1.5
               rounded-2xl border border-white/10 bg-white/[0.05]
               px-5 py-4 shadow-[0_8px_40px_rgba(0,0,0,0.5)]

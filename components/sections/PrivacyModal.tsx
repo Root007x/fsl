@@ -133,7 +133,7 @@ export function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
           <h2 className="text-xl font-semibold text-foreground mb-3">11. Contact Information</h2>
           <p>If you have any questions about this Privacy Policy, please contact us:</p>
           <p className="mt-2 font-medium text-foreground">Falahsys</p>
-          <p>Email: <a href="mailto:falahsystemsltd@gmail.com" className="text-accent underline hover:text-accent/80 transition-colors">falahsystemsltd@gmail.com</a></p>
+          <p>Email: <a href="mailto:falahsystemsltd@gmail.com" className="text-accent underline hover:text-accent/80 transition-colors">info@falahsys.com</a></p>
           <p>Phone: +880 1339-904830</p>
           <p>Address: Ka/4, Mamata Complex, Basundhara R/A, Dhaka - 1229, Bangladesh</p>
         </section>
