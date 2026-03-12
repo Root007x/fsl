@@ -131,7 +131,7 @@ export const PROJECTS: Project[] = [
     year: "2024",
     description: "Education platform delivering quality learning experiences.",
     tags: ["Website Design", "Web Development"],
-    image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Kepler+Academy",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfmOEISTXpOSiKapeFxBn5XvTPL7UX1wIHzA&s",
     introduction: "Kepler Academy is an education platform delivering high-quality learning experiences through a modern digital ecosystem powered by LMS and ERP solutions.",
     client: "Kepler Academy",
     servicesProvided: [
@@ -183,7 +183,7 @@ export const PROJECTS: Project[] = [
     year: "2024",
     description: "Innovative educational solutions and digital learning.",
     tags: ["Web Development"],
-    image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Skylab+Education",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZt_eA75WZWqgSyypeD0s37lQtUosUsa9kVw&s",
     introduction: "Skylab Education is a Bangladesh-based study abroad consultancy helping students pursue higher education in destinations such as the USA, UK, Australia, Canada, New Zealand, Europe, and Asia.",
     servicesProvided: [
       "Web Design",
@@ -211,7 +211,7 @@ export const PROJECTS: Project[] = [
     year: "2024",
     description: "Digital platform for streamlined services.",
     tags: ["Web Development"],
-    image: "https://placehold.co/800x450/f0f0f0/6b7280?text=Sulekkho",
+    image: "https://play-lh.googleusercontent.com/fPm0rCLBvuakinuiTEaQnq5WpJNi1gy1ZxUEDjxVfWnU1X6HQcpzAgQ6iQXMXa-7wvI",
     introduction: "Sulekkho is a Bangladesh-based fashion and lifestyle brand offering over 1,900 products including clothing, jewelry, ornaments, and handcrafted items. The company also operates Sulekkho Fine Art & Craft Coaching Center as a sister concern.",
     servicesProvided: [
       "Web Design",

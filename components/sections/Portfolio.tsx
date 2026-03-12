@@ -74,12 +74,12 @@ export function Portfolio() {
                 <Link href={`/portfolio/${project.id}`} className="block w-full h-full">
                   {/* Project image or gradient placeholder */}
                   {project.image ? (
-                    <div className="aspect-video relative">
+                    <div className="aspect-video relative bg-muted/30">
                       <Image
                         src={project.image}
                         alt={project.name}
                         fill
-                        className="object-cover"
+                        className="object-contain object-center"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         unoptimized
                       />

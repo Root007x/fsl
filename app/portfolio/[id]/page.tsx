@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -59,25 +58,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </Container>
       </section>
 
-      {/* Featured Image */}
-      <section className="py-10">
-        <Container>
-          <div className="relative w-full aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={`${project.name} featured image`}
-                fill
-                className="object-cover"
-                priority
-                unoptimized
-              />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5" />
-            )}
-          </div>
-        </Container>
-      </section>
 
       {/* Content Columns */}
       <section className="py-12 md:py-20">
